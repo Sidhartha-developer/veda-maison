@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn { animation: fadeIn 0.8s ease forwards; }
+  .animate-slideUp { animation: slideUp 0.8s ease forwards; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+
+/* Responsive font sizes for headline */
+h2.glow-text {
+  font-size: clamp(1.8rem, 5vw, 4.5rem); /* Adjusts fluidly with screen size */
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 1rem;
+  color: #1B4D3E; /* Forest Green */
+  text-shadow: 
+    0 0 8px rgba(207, 174, 112, 0.4), /* Muted Gold glow */
+    0 0 16px rgba(207, 174, 112, 0.25);
+  animation: ripple 4s ease-in-out infinite;
+}
+
+/* contact page */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 1s forwards;
+}
+
+/* signature page  */
+
+  .animate-gradient-x {
+    background-size: 300% 300%;
+    animation: gradient-x 6s ease infinite;
+  }
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #loader-logo {
+    transform-origin: center;
+  }
+
+  /* Optional fade-out if you want extra effect */
+  #loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  /* Hide elements initially */
+.hidden-during-loader {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+
+#carousel {
+  overflow-x: hidden; /* hide horizontal scrollbar */
+  scrollbar-width: none; /* Firefox */
+}
+
+#carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+  /* If a card has overlay-open, force the overlay visible (for touch devices) */
+  .gallery-card.overlay-open .overlay {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+
+  /* Make hover glow only on hover-capable devices */
+  @media (hover: hover) and (pointer: fine) {
+    .glow-img:hover {
+      /* subtle neon glow on desktop only (adjust values to taste) */
+      filter: drop-shadow(0 0 6px #00BFFF) drop-shadow(0 0 12px #1E90FF);
+      transition: filter .25s ease;
+    }
+  }
+
+  /* On touch devices, remove hover-triggered transitions that may cause flicker */
+  @media (hover: none) and (pointer: coarse) {
+    .group:hover .overlay { /* disable hover overlay on pure-touch devices */ }
+    .glow-img { filter: none !important; animation: none !important; }
+  }
+
+  model-viewer {
+  touch-action: pan-y; /* allows vertical page scroll */
+}
+
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

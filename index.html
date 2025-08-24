@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="./images/logo.png">
+  <title>Veda Maison</title>
+<!-- <link rel="stylesheet" href="./dist/output.css"> -->
+ <!-- whie running code and writing it use below cdn script ,when u give to client or deploy it , u shud run this command in the int terminal npm run build-css and uncomment the above line and remove cdn link , when u run this npm run build-css the utilities automatically crated ui design in in output.css, u no need to write the output .css itll craete on its own, if u want to check if the ui have be applied then run the index.html and check in brower , tailwind utilities are thr or not   -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./src/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+</head>
+<body class="relative">
+
+<!-- Loader Logo -->
+<div id="loader" class="fixed inset-0 bg-[#0D1B2A] flex items-center justify-center z-50">
+  <img src="./images/white logo.png" alt="Logo" id="loader-logo" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
+</div>
+
+<section class="relative min-h-screen md:min-h-screen w-full overflow-hidden flex items-center justify-center text-white bg-[#0D1B2A]">
+
+  
+  
+  <!-- 3D Model Background -->
+  <!-- <model-viewer 
+    src="./images/steampunk_camera (1).glb"
+    alt="3D Camera"
+    auto-rotate
+    camera-controls
+    disable-zoom
+    interaction-prompt="none"
+    class="absolute inset-0 w-full h-full"
+    style="background-color: #0D1B2A; touch-action: pan-y;">
+  </model-viewer> -->
+
+    <!-- Background Video -->
+  <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+    <source src="./images/hero section background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+    <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/40"></div>
+  
+  <!-- Sticky Logo + Company Name -->
+  <div id="sticky-logo-container" class="fixed top-4 left-4 sm:top-6 sm:left-6 flex items-center space-x-2 sm:space-x-3 z-50 opacity-0">
+    <img src="./images/main-logo.png" alt="Company Logo" id="sticky-logo" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain">
+    <span class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wide md:tracking-widest uppercase bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFD700] bg-clip-text text-transparent">
+      VEDA MAISON
+    </span>
+  </div>
+
+  <!-- Contact Button -->
+  <div id="contact-btn" class="fixed top-4 right-4 sm:top-6 sm:right-6 cursor-pointer z-50 hidden-during-loader">
+    <span class="text-base sm:text-lg md:text-xl lg:text-2xl font-extrabold tracking-wide md:tracking-widest uppercase bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFD700] bg-clip-text text-transparent hover:drop-shadow-[0_0_8px_#FFD700] transition-all">
+      Contact
+    </span>
+  </div>
+
+  <!-- Bottom-left Hero Text -->
+  <div class="absolute bottom-4 sm:bottom-4 md:bottom-4 left-4 sm:left-6 md:left-8 z-10 max-w-xs sm:max-w-md md:max-w-xl text-left px-2 sm:px-4 my-4 sm:my-6">
+    <h1 
+      class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-wide md:tracking-widest uppercase bg-gradient-to-r from-[#FFD700] via-[#FFF8DC] to-[#FFD700] bg-clip-text text-transparent "
+      style="font-family: 'Playfair Display', serif;">
+      Creative Studio & Content Agency
+    </h1>
+  </div>
+
+  <!-- Bottom Swipe Indicator -->
+  <div class="absolute bottom-4 sm:bottom-4 md:bottom-4 right-4 sm:right-6 flex flex-row items-center text-xs sm:text-sm md:text-base font-light bbg-[#0f0f0f] text-[#FFD700] px-2 sm:px-3 py-1 rounded animate-bounce my-4 sm:my-8">
+    <span class="bg-gradient-to-r from-[#FFD700] to-[#FFF8DC] bg-clip-text text-transparent">Swipe up</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 mt-1 text-[#FFD700]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+
+</section>
+
+
+
+
+<!-- About Section -->
+<section id="about" class="bg-[#0D1B2A] py-16 md:py-20 px-6 md:px-12 lg:px-20 min-h-screen flex items-center">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+    
+    <!-- Image -->
+<div class="relative group opacity-0 translate-y-10 transition-all duration-1000 ease-out" data-animate>
+  <img src="./images/Founder’s Creative Office.jpg" 
+       alt="About Veda Maison" 
+       class="rounded-xl shadow-lg transform transition-transform duration-700 group-hover:scale-105 
+              w-full max-h-[500px] md:max-h-[600px] lg:max-h-[700px] object-cover">
+  <div class="absolute inset-0 bg-[#2F5249]/25 opacity-0 group-hover:opacity-100 transition duration-500 rounded-xl"></div>
+</div>
+
+    <!-- Text Content -->
+    <div class="space-y-8 text-[#E5D9CE]">
+      
+      <!-- Section Title -->
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text opacity-0 translate-y-10 transition-all duration-1000 ease-out delay-100" 
+          style="font-family: 'Playfair Display', serif;" data-animate>
+        About Us
+      </h2>
+
+      <!-- Story -->
+      <p class="text-base md:text-lg leading-relaxed opacity-0 translate-y-10 transition-all duration-1000 ease-out delay-300"
+         style="font-family: 'Founders Grotesk', sans-serif;" data-animate>
+        Founded by <span class="text-[#B35628] font-semibold">Arunima Raghavan</span>, 
+        <strong class="text-white">Veda Maison</strong> blends emotional storytelling with 
+        <span class="text-[#D4AF37]">tech-enabled strategy</span> to create brand ecosystems 
+        that thrive in AI-first environments.
+      </p>
+
+      <!-- Key Team -->
+      <div class="space-y-2 opacity-0 translate-y-10 transition-all duration-1000 ease-out delay-500" data-animate>
+        <h3 class="text-2xl font-serif font-semibold text-white" style="font-family: 'Playfair Display', serif;">
+          Key Team Members
+        </h3>
+        <p class="font-sans text-[#E5D9CE]/90" style="font-family: 'Founders Grotesk', sans-serif;">
+          Arunima Raghavan (Founder)
+        </p>
+      </div>
+
+      <!-- Mission -->
+      <div class="space-y-2 opacity-0 translate-y-10 transition-all duration-1000 ease-out delay-700" data-animate>
+        <h3 class="text-2xl font-serif font-semibold text-white" style="font-family: 'Playfair Display', serif;">
+          Mission / Goals
+        </h3>
+        <p class="font-sans text-[#E5D9CE]/90" style="font-family: 'Founders Grotesk', sans-serif;">
+          Build culturally rooted, emotionally sharp, and AI-ready brands for the new age.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Section 2: Signature Text -->
+<section id="scrollGallerySection" class="relative w-full min-h-screen bg-[#0D1B2A] overflow-hidden flex items-center justify-center px-4">
+  <div id="textContainer" class="relative flex flex-col items-center justify-center w-full h-full z-10 text-center">
+    
+    <h1 class="max-w-full text-center text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-snug font-serif"
+        style="font-family: 'Playfair Display', serif;">
+
+      <!-- Marketing -->
+      <span class="relative inline-block text-[#B35628]">
+        Marketing
+        <!-- Doodle underline -->
+        <svg viewBox="0 0 286 73" fill="none" 
+             class="absolute -left-1 -right-1 -top-1 bottom-0 translate-y-0.5 w-full h-auto" 
+             stroke="#FFD700" stroke-width="4">
+          <path d="M142.293 1C106.854 16.8908 6.08202 7.17705 1.23654 43.3756C-2.10604 68.3466 29.5633 73.2652 122.688 71.7518C215.814 70.2384 316.298 70.689 275.761 38.0785C230.14 1.37835 97.0503 24.4575 52.9384 1"
+                stroke-dasharray="800"
+                stroke-dashoffset="800">
+            <animate attributeName="stroke-dashoffset" from="800" to="0" dur="2s" fill="freeze" />
+          </path>
+        </svg>
+      </span>
+
+      <!-- Rest of Heading (luxury gradient) -->
+      <span class="bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text opacity-0 translate-y-4 transition-all duration-1000 ease-out delay-300 animate-fade-up">
+        &nbsp;in the Age of Consciousness
+      </span>
+    </h1>
+
+    <!-- Subtitle with gradient -->
+    <p class="subheadline italic mt-4 max-w-3xl mx-auto text-center bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text opacity-0 translate-y-4 transition-all duration-1000 ease-out delay-500 animate-fade-up"
+       style="font-size: clamp(1rem, 2.5vw, 1.5rem); font-family: 'Founders Grotesk', sans-serif;">
+      Calm power, artistic clarity, and modern sacred intelligence
+    </p>
+  </div>
+</section>
+
+
+<!-- GALLERY SECTION (responsive + touch-friendly) -->
+<section id="gallery" class="relative w-full bg-[#0D1B2A] py-12">
+  <div class="mx-auto max-w-6xl px-4 space-y-10">
+
+    <!-- Heading -->
+    <div class="text-center">
+      <h2 class="text-4xl md:text-5xl font-serif tracking-wide opacity-0 translate-y-6 transition-all duration-700 gallery-heading"
+          style="font-family: 'Playfair Display', serif; color: #ffffff;">
+        Our <span class="text-[#B35628]">Services</span>
+      </h2>
+    </div>
+
+    <!-- First Row: 3 items on sm+, stacked on mobile -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 place-items-center">
+      <!-- Card 1 -->
+      <div class="glow-img group gallery-card relative w-full max-w-[320px] h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer opacity-0 translate-y-6 transition-all duration-700">
+        <img src="./images/AI Brand Visibility.jpg" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <div class="overlay absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center
+                    opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-400 ease-out pointer-events-none group-hover:pointer-events-auto">
+          <h3 class="text-xl font-bold text-[#FFD700] mb-2">AI Brand Visibility</h3>
+          <p class="px-4 bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text">
+            Embedding your brand inside AI platforms like ChatGPT and Google SGE.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glow-img group gallery-card relative w-full max-w-[320px] h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer opacity-0 translate-y-6 transition-all duration-700 delay-150">
+        <img src="./images/Emotional Marketing Systems.jpg" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <div class="overlay absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center
+                    opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-400 ease-out pointer-events-none group-hover:pointer-events-auto">
+          <h3 class="text-xl font-bold text-[#FFD700] mb-2">Emotional Marketing</h3>
+          <p class="px-4 bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text">
+            Campaigns and storytelling with deep emotional resonance.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glow-img group gallery-card relative w-full max-w-[320px] h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer opacity-0 translate-y-6 transition-all duration-700 delay-300">
+        <img src="./images/Founder’s Creative Office.jpg" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <div class="overlay absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center
+                    opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-400 ease-out pointer-events-none group-hover:pointer-events-auto">
+          <h3 class="text-xl font-bold text-[#FFD700] mb-2">Creative Office</h3>
+          <p class="px-4 bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text">
+            Founder-level strategy, positioning, and vision support.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row: 2 items centered on sm+, stacked on mobile -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 place-items-center">
+      <!-- Card 4 -->
+      <div class="glow-img group gallery-card relative w-80 h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer opacity-0 translate-y-6 transition-all duration-700 delay-450">
+        <img src="./images/Marketing Automation.jpg" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <div class="overlay absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center
+                    opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-400 ease-out pointer-events-none group-hover:pointer-events-auto">
+          <h3 class="text-xl font-bold text-[#FFD700] mb-2">Marketing Automation</h3>
+          <p class="px-4 bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text">
+            CRM setup, lead flows, and automated journeys.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="glow-img group gallery-card relative w-80 h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer opacity-0 translate-y-6 transition-all duration-700 delay-600">
+        <img src="./images/Web + Visual Design.jpg" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <div class="overlay absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center
+                    opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-400 ease-out pointer-events-none group-hover:pointer-events-auto">
+          <h3 class="text-xl font-bold text-[#FFD700] mb-2">Web + Visual Design</h3>
+          <p class="px-4 bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text">
+            Site aesthetics, UX, and branding aligned perfectly.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<!-- Services Section -->
+<section id="carousel" class="relative bg-[#0D1B2A] py-6">
+  <div class="text-center">
+    <h2 class="text-4xl md:text-5xl font-serif text-white tracking-wide"
+        style="font-family: 'Playfair Display', serif;">
+      Our <span class="text-[#B35628]">Services</span>
+    </h2>
+  </div>
+
+  <div id="carouselSticky" class="h-screen flex items-center overflow-x-hidden overflow-y-hidden px-2 sm:px-6">
+    <div id="carouselInner" class="flex gap-6 flex-nowrap px-2 sm:px-6">
+
+      <!-- Card 1 -->
+      <div class="group flex-shrink-0 w-[100vw] sm:w-[50vw] lg:w-[33.33vw] cursor-pointer">
+        <div class="relative h-[60vh] rounded-lg shadow-lg overflow-hidden transition-transform duration-300 group-hover:scale-105">
+          <img src="./images/AI Brand Visibility.jpg" class="w-full h-full object-cover" alt="AI Brand Visibility">
+        </div>
+        <div class="mt-2 text-left transition-transform duration-300 group-hover:scale-105">
+          <h3 class="text-xl font-black uppercase mb-1 text-[#B35628]"
+              style="font-family:'Playfair Display', serif;">
+            AI Brand Visibility
+          </h3>
+          <p class="text-sm leading-relaxed bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text"
+             style="font-family:'Founders Grotesk', sans-serif;">
+            Embedding your brand inside AI platforms like ChatGPT and Google’s Search Generative Experience.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group flex-shrink-0 w-[100vw] sm:w-[50vw] lg:w-[33.33vw] cursor-pointer">
+        <div class="relative h-[60vh] rounded-lg shadow-lg overflow-hidden transition-transform duration-300 group-hover:scale-105">
+          <img src="./images/midnight-scholar-s-light-stockcake.jpg" class="w-full h-full object-cover" alt="Emotional Marketing Systems">
+        </div>
+        <div class="mt-2 text-left transition-transform duration-300 group-hover:scale-105">
+          <h3 class="text-xl font-black uppercase mb-1 text-[#B35628]"
+              style="font-family:'Playfair Display', serif;">
+            Emotional Marketing Systems
+          </h3>
+          <p class="text-sm leading-relaxed bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text"
+             style="font-family:'Founders Grotesk', sans-serif;">
+            Content, campaigns, and storytelling with deep resonance across modern platforms.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group flex-shrink-0 w-[100vw] sm:w-[50vw] lg:w-[33.33vw] cursor-pointer">
+        <div class="relative h-[60vh] rounded-lg shadow-lg overflow-hidden transition-transform duration-300 group-hover:scale-105">
+          <img src="./images/nighttime-coding-session-stockcake.jpg" class="w-full h-full object-cover" alt="Founder’s Creative Office">
+        </div>
+        <div class="mt-2 text-left transition-transform duration-300 group-hover:scale-105">
+          <h3 class="text-xl font-black uppercase mb-1 text-[#B35628]"
+              style="font-family:'Playfair Display', serif;">
+            Founder’s Creative Office
+          </h3>
+          <p class="text-sm leading-relaxed bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text"
+             style="font-family:'Founders Grotesk', sans-serif;">
+            Strategy, brand voice refinement, positioning, and ideation support directly with founder-level vision.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group flex-shrink-0 w-[100vw] sm:w-[50vw] lg:w-[33.33vw] cursor-pointer">
+        <div class="relative h-[60vh] rounded-lg shadow-lg overflow-hidden transition-transform duration-300 group-hover:scale-105">
+          <img src="./images/purple-monitor-glow-stockcake.jpg" class="w-full h-full object-cover" alt="Marketing Automation">
+        </div>
+        <div class="mt-2 text-left transition-transform duration-300 group-hover:scale-105">
+          <h3 class="text-xl font-black uppercase mb-1 text-[#B35628]"
+              style="font-family:'Playfair Display', serif;">
+            Marketing Automation
+          </h3>
+          <p class="text-sm leading-relaxed bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text"
+             style="font-family:'Founders Grotesk', sans-serif;">
+            CRM setup, email journeys, lead flows, and funnel architecture.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group flex-shrink-0 w-[100vw] sm:w-[50vw] lg:w-[33.33vw] cursor-pointer">
+        <div class="relative h-[60vh] rounded-lg shadow-lg overflow-hidden transition-transform duration-300 group-hover:scale-105">
+          <img src="./images/retro-computer-glow-stockcake.jpg" class="w-full h-full object-cover" alt="Web + Visual Design">
+        </div>
+        <div class="mt-2 text-left transition-transform duration-300 group-hover:scale-105">
+          <h3 class="text-xl font-black uppercase mb-1 text-[#B35628]"
+              style="font-family:'Playfair Display', serif;">
+            Web + Visual Design
+          </h3>
+          <p class="text-sm leading-relaxed bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text"
+             style="font-family:'Founders Grotesk', sans-serif;">
+            Site structure, aesthetics, and UX aligned with the brand’s philosophy and audience.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Draggable Cards Section -->
+<section class="relative grid min-h-screen w-full place-content-center overflow-hidden bg-[#0D1B2A]">
+  <!-- Background Text -->
+  <!-- <h2 class="relative z-0 text-[20vw] font-black md:text-[200px]" 
+      style="color: #1B263B;">
+    VEDA 
+  </h2>
+    <h2 class="relative z-0 text-[20vw] font-black md:text-[200px]" 
+      style="color: #1B263B;">
+    MAISON
+  </h2> -->
+  <img class="relative z-0 w-80 h-80 opacity-70" src="./images/white logo.png"/>
+
+  <!-- Cards Container -->
+  <div id="cards-container" class="absolute inset-0 z-10">
+    <img src="./images/AI Brand Visibility.jpg"
+      alt="Example image"
+      class="drag-card absolute bg-[#E5D9CE] p-1 pb-4 rounded-lg shadow-lg w-36 md:w-56"
+      style="top:20%; left:25%; rotate:6deg; border: 2px solid #B35628;"
+    />
+    <img src="./images/retro-computer-glow-stockcake.jpg"
+      alt="Example image"
+      class="drag-card absolute bg-[#E5D9CE] p-1 pb-4 rounded-lg shadow-lg w-24 md:w-48"
+      style="top:45%; left:60%; rotate:12deg; border: 2px solid #FFD700;"
+    />
+    <img src="./images/purple-monitor-glow-stockcake.jpg"
+      alt="Example image"
+      class="drag-card absolute bg-[#E5D9CE] p-1 pb-4 rounded-lg shadow-lg w-52 md:w-80"
+      style="top:20%; left:40%; rotate:-6deg; border: 2px solid #B35628;"
+    />
+    <img src="./images/nighttime-coding-session-stockcake.jpg"
+      alt="Example image"
+      class="drag-card absolute bg-[#E5D9CE] p-1 pb-4 rounded-lg shadow-lg w-48 md:w-72"
+      style="top:50%; left:40%; rotate:8deg; border: 2px solid #FFD700;"
+    />
+    <img src="./images/midnight-scholar-s-light-stockcake.jpg"
+      alt="Example image"
+      class="drag-card absolute bg-[#E5D9CE] p-1 pb-4 rounded-lg shadow-lg w-40 md:w-64"
+      style="top:20%; left:65%; rotate:18deg; border: 2px solid #B35628;"
+    />
+    <img src="./images/Emotional Marketing Systems.jpg"
+      alt="Example image"
+      class="drag-card absolute bg-[#E5D9CE] p-1 pb-4 rounded-lg shadow-lg w-24 md:w-48"
+      style="top:35%; left:55%; rotate:-3deg; border: 2px solid #FFD700;"
+    />
+  </div>
+</section>
+
+<!-- Philosophy Section -->
+<section class="bg-[#0D1B2A] p-6 md:p-12 -mt-4">
+  <div class="mx-auto max-w-5xl font-sans" style="font-family: 'Founders Grotesk', sans-serif;">
+    
+    <!-- Hover Links -->
+    <div id="hover-links">
+
+      <!-- First Item -->
+      <a href="#"
+         class="group relative flex items-center justify-between py-6 transition-colors duration-500"  
+      > 
+        <div class="pr-4">
+          <span class="block text-4xl md:text-6xl font-serif font-semibold"
+                style="font-family: 'Playfair Display', serif; color: #B35628;">
+            Core Values
+          </span>
+          <span class="mt-2 block text-base bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text opacity-0 translate-y-4 transition-all duration-1000 ease-out delay-200 animate-fade-up">
+            Emotional clarity, cultural intelligence, strategic boldness, future fluency
+          </span>
+        </div>
+        <img src="./images/Core Values.jpg"
+             alt="Core Values"
+             class="link-img absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64 opacity-0 scale-0 transition-transform duration-300 ease-out"
+             style="top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);" />
+        <div class="hover-icon relative z-10 p-4 cursor-pointer text-[#FFD700]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </div>
+      </a>
+
+      <!-- Second Item -->
+      <a href="#"
+         class="group relative flex items-center justify-between py-6 transition-colors duration-500"
+      >
+        <div class="pr-4">
+          <span class="block text-4xl md:text-6xl font-serif font-semibold"
+                style="font-family: 'Playfair Display', serif; color: #B35628;">
+            Quotes / Principles
+          </span>
+          <span class="mt-2 block text-base bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] text-transparent bg-clip-text opacity-0 translate-y-4 transition-all duration-1000 ease-out delay-300 animate-fade-up">
+            Automation is not strategy. Design is not content. Marketing is emotional architecture.
+          </span>
+        </div>
+        <img src="./images/QuotesPrinciples.jpg"
+             alt="Quotes"
+             class="link-img absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64 opacity-0 scale-0 transition-transform duration-300 ease-out"
+             style="top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);" />
+        <div class="hover-icon relative z-10 p-4 cursor-pointer text-[#FFD700]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="flex flex-col md:flex-row h-screen bg-[#0D1B2A] text-white">
+  <!-- Left Side (Contact Info) -->
+  <div class="md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-12 md:py-0 space-y-10 relative">
+    <!-- Title Section -->
+    <div>
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-[#D4AF37] via-[#ffffff] to-[#D4AF37] bg-clip-text text-transparent"
+          style="font-family: 'Playfair Display', serif;">
+        Let’s Connect
+      </h2>
+      <p class="text-base sm:text-lg mt-3 bg-gradient-to-r from-[#FFD700] via-[#fff8dc] to-[#FFD700] text-transparent bg-clip-text"
+         style="font-family: 'Founders Grotesk', sans-serif;">
+        Reach out anytime — we’re just a message away.
+      </p>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="space-y-6 sm:space-y-8">
+      <!-- WhatsApp -->
+      <div class="flex items-center space-x-4 group">
+        <div class="p-3 rounded-full bg-[#1F2937] group-hover:bg-[#00C853] transition-all duration-300 shadow-lg shadow-[#00C853]/30">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 h-5 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.97-4.03 9-9 9a9 9 0 01-9-9c0-4.97 4.03-9 9-9s9 4.03 9 9z" />
+          </svg>
+        </div>
+        <span class="text-lg sm:text-xl font-medium bg-gradient-to-r from-[#FFD700] via-[#fff8dc] to-[#FFD700] text-transparent bg-clip-text group-hover:text-[#00C853] transition-colors">
+          +91 98765 43210
+        </span>
+      </div>
+
+      <!-- Email -->
+      <div class="flex items-center space-x-4 group">
+        <div class="p-3 rounded-full bg-[#1F2937] group-hover:bg-[#2962FF] transition-all duration-300 shadow-lg shadow-[#2962FF]/30">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 h-5 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 4H8m-2-8h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2z" />
+          </svg>
+        </div>
+        <span class="text-lg sm:text-xl font-medium bg-gradient-to-r from-[#FFD700] via-[#fff8dc] to-[#FFD700] text-transparent bg-clip-text group-hover:text-[#2962FF] transition-colors">
+          hello@example.com
+        </span>
+      </div>
+
+      <!-- Location -->
+      <div class="flex items-center space-x-4 group">
+        <div class="p-3 rounded-full bg-[#1F2937] group-hover:bg-[#FF6D00] transition-all duration-300 shadow-lg shadow-[#FF6D00]/30">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 sm:w-6 h-5 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5s-3 1.343-3 3 1.343 3 3 3z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21c0-4-8-9-8-13a8 8 0 1116 0c0 4-8 9-8 13z" />
+          </svg>
+        </div>
+        <span class="text-lg sm:text-xl font-medium bg-gradient-to-r from-[#FFD700] via-[#fff8dc] to-[#FFD700] text-transparent bg-clip-text group-hover:text-[#FF6D00] transition-colors">
+          Hyderabad, India
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right Side (Spotlight Reveal) -->
+  <div id="reveal-container" class="md:w-1/2 w-full relative flex items-center justify-center bg-[#0D1B2A] overflow-hidden mt-12 md:mt-0">
+    <!-- Image -->
+    <img id="reveal-img" 
+         src="./images/white logo.png" 
+         class="absolute w-3/4 h-auto pointer-events-none opacity-0 transition-opacity duration-500"
+         alt="Revealed Image">
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="bg-[#0D1B2A] text-gray-200 py-12 px-6">
+
+  <!-- Bottom copyright -->
+  <div class="mt-8 text-center text-sm text-gray-400">
+    &copy; 2025 VEDA MAISON. All Rights Reserved.
+  </div>
+</footer>
+
+
+<!-- loader -->
+ <script>
+(() => {
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    const loaderLogo = document.getElementById('loader-logo');
+    const stickyLogoContainer = document.getElementById('sticky-logo-container');
+    const stickyLogo = document.getElementById('sticky-logo');
+
+    if (!loader || !loaderLogo || !stickyLogoContainer || !stickyLogo) return;
+
+    // ---- Loader phase ----
+    let loaderRotation = 0;
+    let startTime = null;
+    const delay = 2000;    // time to spin in place
+    const duration = 1000; // time to move+scale into sticky position
+
+    function computePath() {
+      // Measure current positions/sizes
+      const stickyRect = stickyLogo.getBoundingClientRect();
+      const loaderRect = loaderLogo.getBoundingClientRect();
+      return {
+        x: stickyRect.left - loaderRect.left,
+        y: stickyRect.top - loaderRect.top,
+        s: stickyRect.width / loaderRect.width
+      };
+    }
+
+    let path = computePath();
+    window.addEventListener('resize', () => { path = computePath(); });
+
+    function animateLoader(ts) {
+      if (!startTime) startTime = ts;
+      const elapsed = ts - startTime;
+
+      // Continuous rotation
+      loaderRotation = (loaderRotation + 5) % 360;
+
+      if (elapsed > delay) {
+        const t = Math.min((elapsed - delay) / duration, 1);
+        const curX = path.x * t;
+        const curY = path.y * t;
+        const curS = 1 + (path.s - 1) * t;
+
+        loaderLogo.style.transform =
+          `translate(${curX}px, ${curY}px) scale(${curS}) rotate(${loaderRotation}deg)`;
+
+        if (t === 1) {
+          // Blend complete
+          loader.remove();
+          stickyLogoContainer.style.opacity = '1';
+          startStickyScrollRotation(); // start scroll rotation now
+          return;
+        }
+      } else {
+        // Spin in place during delay
+        loaderLogo.style.transform = `rotate(${loaderRotation}deg)`;
+      }
+
+      requestAnimationFrame(animateLoader);
+    }
+
+    requestAnimationFrame(animateLoader);
+
+    // ---- Sticky phase: rotate on scroll direction ----
+    function startStickyScrollRotation() {
+      let lastY = window.scrollY;
+      let angle = 0;
+      let ticking = false;
+
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          const dir = y > lastY ? 1 : -1; // down = +, up = -
+          angle += dir * 5;               // adjust rotation step as you like
+          stickyLogo.style.transform = `rotate(${angle}deg)`;
+          lastY = y;
+          ticking = false;
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  });
+})();
+</script>
+
+<!-- Animation Script for about section -->
+<script>
+  const observerAbout = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('[data-animate]').forEach(el => observerAbout.observe(el));
+</script>
+
+
+<!-- GSAP Animation: Fade & Pin -->
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Kill any old ScrollTriggers (for hot reload safety)
+  ScrollTrigger.getAll().forEach(t => {
+    if (t.trigger && t.trigger.id === "scrollGallerySection") t.kill(true);
+  });
+
+  // Responsive ScrollTrigger setup
+  ScrollTrigger.matchMedia({
+
+    // For mobile screens
+    "(max-width: 767px)": function () {
+      createScrollAnimations("+=160%");
+    },
+
+    // For tablet & desktop
+    "(min-width: 768px)": function () {
+      createScrollAnimations("+=120%");
+    }
+  });
+
+  function createScrollAnimations(scrollDistance) {
+    // Fade out heading first
+    gsap.to("#textContainer h1", {
+      opacity: 0,
+      duration: 1,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#scrollGallerySection",
+        start: "top top",
+        end: scrollDistance,
+        scrub: 1.2,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    // Fade out subtitle with slight delay
+    gsap.to("#textContainer p", {
+      opacity: 0,
+      duration: 1,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#scrollGallerySection",
+        start: "top+=50 top", // starts a bit later
+        end: scrollDistance,
+        scrub: 1.2,
+        pin: true, // keeps section pinned
+        anticipatePin: 1,
+        invalidateOnRefresh: true
+      }
+    });
+  }
+
+  // Refresh ScrollTrigger when fonts load & on resize
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+  window.addEventListener("load", () => ScrollTrigger.refresh());
+  window.addEventListener("resize", () => ScrollTrigger.refresh());
+</script>
+
+
+<!-- doodling animation -->
+<script>
+  function animateDoodle(path) {
+    const length = path.getTotalLength();
+    path.style.transition = "none"; 
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+
+    requestAnimationFrame(() => { // ensure reset is applied before animating
+      path.style.transition = "stroke-dashoffset 1.25s ease-in-out";
+      path.style.strokeDashoffset = 0;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const path = document.querySelector("#scrollGallerySection svg path");
+    if (!path) return;
+
+    // Intersection Observer to re-trigger animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateDoodle(path);
+        }
+      });
+    }, { threshold: 0.5 }); // trigger when 50% of section is visible
+
+    observer.observe(document.getElementById("scrollGallerySection"));
+  });
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll("a.group");
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    cards.forEach(card => {
+      const boxTop = card.getBoundingClientRect().top;
+      if (boxTop < triggerBottom) {
+        card.classList.add("opacity-100", "translate-y-0");
+        card.classList.remove("opacity-0", "translate-y-6");
+      }
+    });
+  };
+  cards.forEach(c => c.classList.add("opacity-0", "translate-y-6", "transition-all", "duration-700"));
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+});
+</script>
+
+<!-- services section overlay and fade in -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // IntersectionObserver for heading & cards
+  const ioOptions = { threshold: 0.2 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting) {
+        el.classList.remove('opacity-0', 'translate-y-6');
+        el.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        el.classList.add('opacity-0', 'translate-y-6');
+        el.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
+  }, ioOptions);
+
+  const heading = document.querySelector('.gallery-heading');
+  if (heading) observer.observe(heading);
+
+  const cards = document.querySelectorAll('.gallery-card');
+  cards.forEach(card => observer.observe(card));
+
+  // Touch devices: toggle overlay
+  const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none)').matches;
+  if (isTouch) {
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const open = card.classList.contains('overlay-open');
+        document.querySelectorAll('.gallery-card.overlay-open').forEach(c => c.classList.remove('overlay-open'));
+        if (!open) card.classList.add('overlay-open');
+        e.stopPropagation();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.gallery-card')) {
+        document.querySelectorAll('.gallery-card.overlay-open').forEach(c => c.classList.remove('overlay-open'));
+      }
+    });
+
+    document.documentElement.classList.add('touch-device');
+  }
+});
+</script>
+
+
+<!-- carousel section -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+    console.warn("GSAP or ScrollTrigger not loaded");
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initCarousel() {
+    const carousel = document.getElementById("carousel");
+    const inner = document.getElementById("carouselInner");
+    if (!carousel || !inner) return;
+
+    const totalScroll = inner.scrollWidth - window.innerWidth;
+
+    // Pin and scroll horizontally
+    ScrollTrigger.create({
+      id: "carouselPin",
+      trigger: carousel,
+      start: "top top",
+      end: () => "+=" + (totalScroll * 1.5),
+      scrub: 1,
+      pin: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true
+    });
+
+    gsap.to(inner, {
+      x: () => -totalScroll,
+      ease: "none",
+      scrollTrigger: {
+        trigger: carousel,
+        start: "top top",
+        end: () => "+=" + (totalScroll * 1.5),
+        scrub: 1
+      }
+    });
+
+    // Fade-in cards as they come into view
+    gsap.utils.toArray("#carouselInner .group").forEach((card, i) => {
+      gsap.from(card, {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.8,
+        delay: i * 0.05,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          containerAnimation: ScrollTrigger.getById("carouselPin"),
+          start: "left center"
+        }
+      });
+    });
+  }
+
+  // Handle resize with debounce
+  let resizeTimeout;
+  function handleResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      initCarousel();
+    }, 200);
+  }
+
+  window.addEventListener("load", initCarousel);
+  window.addEventListener("resize", handleResize);
+});
+</script>
+
+
+
+
+
+
+
+<!-- philosophy section for hover -->
+<script>
+const section = document.querySelector('#hover-links');
+const icons = document.querySelectorAll('#hover-links .hover-icon');
+let activeImg = null;
+
+icons.forEach(icon => {
+  const link = icon.closest('a');
+  const img = link.querySelector('.link-img');
+
+  icon.addEventListener('mouseenter', () => {
+    if (!img) return;
+
+    if (activeImg && activeImg !== img) {
+      activeImg.style.transform = 'translate(-50%, -50%) scale(0) rotate(-12deg)';
+      activeImg.style.opacity = '0';
+    }
+
+    img.style.opacity = '1';
+    img.style.transform = 'translate(-50%, -50%) scale(1) rotate(12deg)';
+    activeImg = img;
+  });
+
+  icon.addEventListener('mousemove', e => {
+    if (!img) return;
+    const rect = link.getBoundingClientRect();
+    img.style.left = (e.clientX - rect.left) + 'px';
+    img.style.top = (e.clientY - rect.top) + 'px';
+  });
+
+  icon.addEventListener('mouseleave', () => {
+    if (activeImg === img) {
+      img.style.transform = 'translate(-50%, -50%) scale(0) rotate(-12deg)';
+      img.style.opacity = '0';
+      activeImg = null;
+    }
+  });
+});
+
+section.addEventListener('mouseleave', () => {
+  if (activeImg) {
+    activeImg.style.transform = 'translate(-50%, -50%) scale(0) rotate(-12deg)';
+    activeImg.style.opacity = '0';
+    activeImg = null;
+  }
+});
+</script>
+
+<!-- philosophy section -->
+<script>
+  // Simple scroll reveal animation
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll("a.group");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      cards.forEach(card => {
+        const boxTop = card.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          card.classList.add("opacity-100", "translate-y-0");
+          card.classList.remove("opacity-0", "translate-y-6");
+        }
+      });
+    };
+    cards.forEach(c => c.classList.add("opacity-0", "translate-y-6", "transition-all", "duration-700"));
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  });
+</script>
+
+<!-- draggable cards -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("cards-container");
+    const cards = document.querySelectorAll(".drag-card");
+
+    // Ensure container has proper positioning
+    if (window.getComputedStyle(container).position === "static") {
+      container.style.position = "relative";
+    }
+
+    // Keep track of highest z-index
+    let maxZ = 10;
+
+    cards.forEach(card => {
+      Draggable.create(card, {
+        bounds: container,
+        inertia: true,
+        onPress(event) {
+          // Prevent scroll on touch devices
+          if (event && event.preventDefault) {
+            event.preventDefault();
+          }
+
+          // Bring clicked card to front efficiently
+          this.target.style.zIndex = ++maxZ;
+        }
+      });
+    });
+
+    // Update bounds on window resize
+    window.addEventListener("resize", () => {
+      Draggable.getAll().forEach(d => d.applyBounds());
+    });
+  });
+</script>
+
+
+<!-- contact section -->
+<script>
+  const container = document.getElementById("reveal-container");
+  const img = document.getElementById("reveal-img");
+
+  container.addEventListener("mouseenter", () => {
+    img.style.opacity = "1";
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    const rect = container.getBoundingClientRect();
+    const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
+    const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
+
+    // Use percentage for mask position and relative radius
+    const maskRadius = Math.min(rect.width, rect.height) * 0.25; // 25% of smaller dimension
+
+    const maskValue = `radial-gradient(circle ${maskRadius}px at ${xPercent}% ${yPercent}%, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%)`;
+
+    img.style.webkitMaskImage = maskValue;
+    img.style.webkitMaskRepeat = "no-repeat";
+    img.style.webkitMaskSize = "cover";
+
+    img.style.maskImage = maskValue;
+    img.style.maskRepeat = "no-repeat";
+    img.style.maskSize = "cover";
+  });
+
+  container.addEventListener("mouseleave", () => {
+    img.style.opacity = "0";
+    img.style.webkitMaskImage = "none";
+    img.style.maskImage = "none";
+  });
+</script>
+
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        entry.target.classList.add('opacity-0', 'translate-y-10');
+        entry.target.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
+  }, { threshold: 0.2 }); // 20% visible triggers animation
+
+  // Observe heading + gallery cards
+  document.querySelectorAll('.gallery-card, .gallery-heading').forEach(el => observer.observe(el));
+</script>
+
+
+
+
+</body>
+</html>
